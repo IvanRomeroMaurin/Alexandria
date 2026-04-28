@@ -150,9 +150,28 @@ npm run install:all
 3. **Configurar variables de entorno**
 
 ```bash
-# Copiar archivos de ejemplo
+# Backend
 cp apps/backend/src/Web/appsettings.Development.json apps/backend/src/Web/appsettings.json
+
+# Frontends - crear .env.local en cada app
+touch apps/store/.env.local
+touch apps/dashboard/.env.local
+touch apps/admin/.env.local
 ```
+
+4. **Configurar puertos de desarrollo**
+
+Los scripts `dev` de dashboard y admin necesitan el flag `--port` para evitar conflictos con el store:
+
+```bash
+# apps/dashboard/package.json
+"dev": "next dev --port 3001"
+
+# apps/admin/package.json
+"dev": "next dev --port 3002"
+```
+
+> ✅ El store usa el puerto 3000 por defecto, no necesita configuración extra.
 
 ### ⚙️ Variables de Entorno
 
@@ -177,18 +196,43 @@ cp apps/backend/src/Web/appsettings.Development.json apps/backend/src/Web/appset
 
 > 🔐 **Nota:** Para obtener tokens de MercadoPago, crea una cuenta en [MercadoPago Developers](https://www.mercadopago.com.ar/developers).
 
+### 📄 Archivos `.env.example`
+
+Para facilitar la configuración inicial, creá estos archivos en cada app:
+
+**`apps/store/.env.example`**
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:5186
+```
+
+**`apps/dashboard/.env.example`**
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:5186
+```
+
+**`apps/admin/.env.example`**
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:5186
+```
+
+Luego copiá cada `.env.example` a `.env.local` y ajustá los valores según tu entorno.
+
 #### Frontend (`.env.local`)
 
+Cada aplicación Next.js necesita su propio archivo `.env.local` en su directorio:
+
 ```bash
-# Store
-NEXT_PUBLIC_API_URL=http://localhost:5000
+# apps/store/.env.local
+NEXT_PUBLIC_API_URL=http://localhost:5186
 
-# Dashboard
-NEXT_PUBLIC_API_URL=http://localhost:5000
+# apps/dashboard/.env.local
+NEXT_PUBLIC_API_URL=http://localhost:5186
 
-# Admin
-NEXT_PUBLIC_API_URL=http://localhost:5000
+# apps/admin/.env.local
+NEXT_PUBLIC_API_URL=http://localhost:5186
 ```
+
+> ⚠️ **Importante:** Crear el archivo `.env.local` en cada carpeta de app (no en la raíz del proyecto).
 
 ### 🏃 Ejecutar el Proyecto
 
@@ -216,7 +260,9 @@ npm run dev --workspace=apps/admin
 | 🏪 Store | 3000 | http://localhost:3000 |
 | 📊 Dashboard | 3001 | http://localhost:3001 |
 | ⚙️ Admin | 3002 | http://localhost:3002 |
-| 🔌 API | 5000 | http://localhost:5000 |
+| 🔌 API | 5186 | http://localhost:5186 |
+
+> 🔍 **¿Qué puerto usa el backend?** Al ejecutar `dotnet run`, el output muestra el puerto en que está escuchando (por defecto `http://localhost:5186`). Si ves otro puerto en la consola, usá ese en lugar del 5186.
 
 ---
 
