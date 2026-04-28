@@ -151,7 +151,7 @@ npm run install:all
 
 ```bash
 # Backend
-cp apps/backend/src/Web/appsettings.Development.json apps/backend/src/Web/appsettings.json
+cp apps/api/src/Web/appsettings.Development.json apps/api/src/Web/appsettings.json
 
 # Frontends - crear .env.local en cada app
 touch apps/store/.env.local
@@ -175,7 +175,7 @@ Los scripts `dev` de dashboard y admin necesitan el flag `--port` para evitar co
 
 ### ⚙️ Variables de Entorno
 
-#### Backend (`apps/backend/src/Web/appsettings.json`)
+#### Backend (`apps/api/src/Web/appsettings.json`)
 
 ```json
 {
@@ -240,7 +240,7 @@ NEXT_PUBLIC_API_URL=http://localhost:5186
 
 ```bash
 # Terminal 1: Backend
-cd apps/backend/src/Web
+cd apps/api/src/Web
 dotnet run
 
 # Terminal 2: Store (Tienda pública)
@@ -302,7 +302,7 @@ Alexandria implementa una arquitectura multi-tenant donde cada comerciante tiene
 
 ### 🛠️ Configuración de Hosts
 
-En `apps/backend/src/Web/Program.cs`:
+En `apps/api/src/Web/Program.cs`:
 
 ```csharp
 // El middleware de multi-tenant extrae el subdominio del Host
@@ -337,7 +337,7 @@ alexandria/
 │   └── 🔧 utils/          # Utilidades
 │       └── src/
 │
-└── 📁 apps/backend/
+└── 📁 apps/api/
     └── src/
         ├── 🏛️ Application/    # CQRS Handlers
         ├── 🏭 Domain/         # Entidades
