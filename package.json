@@ -1,0 +1,16 @@
+{
+  "name": "alexandria",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/store",
+    "apps/dashboard",
+    "apps/admin",
+    "packages/*"
+  ],
+  "scripts": {
+    "store": "npm run dev --workspace=apps/store",
+    "dashboard": "npm run dev --workspace=apps/dashboard",
+    "admin": "npm run dev --workspace=apps/admin"
+  }
+}
