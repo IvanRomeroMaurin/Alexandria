@@ -492,3 +492,19 @@ $RECYCLE.BIN/
 *.db
 *.db-shm
 *.db-wal
+
+# ========================================
+# Next.js & Frontend (Agregado para Alexara)
+# ========================================
+.next/
+out/
+build/
+dist/
+
+# ========================================
+# Variables de Entorno y Secretos
+# ========================================
+.env
+.env.*
+!.env.example
+*.local

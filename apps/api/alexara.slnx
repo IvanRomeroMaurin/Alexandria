@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/alexara.API/alexara.API.csproj" />
+    <Project Path="src/alexara.Application/alexara.Application.csproj" />
+    <Project Path="src/alexara.Domain/alexara.Domain.csproj" />
+    <Project Path="src/alexara.Infrastructure/alexara.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/alexara.Application.Tests/alexara.Application.Tests.csproj" />
+    <Project Path="tests/alexara.Domain.Tests/alexara.Domain.Tests.csproj" />
+    <Project Path="tests/alexara.Integration.Tests/alexara.Integration.Tests.csproj" />
+  </Folder>
+</Solution>
